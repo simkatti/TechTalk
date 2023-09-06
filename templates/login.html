@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <!----link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/log_in.css"/--->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="log_in.css")}}"/>
+     
+</head>
+<body>
+    <title>Luo käyttäjätunnus</title>   
+    <h3>Kirjaudu sisään</h3>
+    <form>
+        <p>Käyttäjätunnus: </p>
+        <input type="text" name="käyttäjätunnus">
+        <p>Salasana: </p>
+        <input type="text" name="salasana">
+    </form>
+    <div class="button-container">
+        <a href="/homepage" class="button">Kirjaudu</a>
+
+</body>
+</html>

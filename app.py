@@ -9,11 +9,11 @@ def index():
 
 @app.route("/sign_in")
 def page1():
-    return "Kirjaudu sisään tai luo uusi tunnus"
+    return render_template("login.html")
 
 @app.route("/create_account")
 def page2():
-    return "Luo uusi tunnus"
+    return render_template("createaccount.html")
 
 @app.route("/homepage")
 def page3():
