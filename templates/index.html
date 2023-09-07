@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="landing.css")}}"/>
+    <link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/landing.css"/>
+    <!--link rel="stylesheet" type="text/css" href="{{url_for('static', filename="landing.css")}}"/-->
      
 </head>
 <body>
     <title>TeckTalk</title>   
-    <h1>Welcome to TechTalk a home for HY CS faculty members</h1>
-    <h2>Liity mukaan ja yhdisty käpistelijöiden maailmaan</h2>
+    <h1>Welcome to <span class="font">TechTalk</span> a home for HY CS faculty members</h1>
+    <h2>Join in and experience the world where the käpistelijät unite</h2>
     <div class="container">
-        <p class ="login-txt">Kirjaudu sisään tai luo uusi käyttäjä</p>
+        <p class ="login-txt">Login or create account</p>
         <div class="button-container">
-        <a href="/sign_in" class="button">KIRJAUDU SISÄÄN</a>
-        <a href="/create_account" class="button">LUO UUSI KÄYTTÄJÄ</a> 
-        </div>
+        <a href="/sign_in" class="button">LOGIN</a>
+        <a href="/create_account" class="button">SIGN UP</a> 
     </div>
 </body>
 </html>

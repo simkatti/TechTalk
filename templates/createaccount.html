@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <head>
-    <!---link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/create_acc.css"/--->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="create_acc.css")}}"/>
+    <link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/create_acc.css"/>
+    <!--link rel="stylesheet" type="text/css" href="{{url_for('static', filename="create_acc.css")}}"/-->
      
 </head>
 <body>
-    <title>Luo käyttäjätunnus</title>   
-    <h3>Luo käyttäjä</h3>
-    <form>
-        <p>Käyttäjätunnus: </p>
-        <input type="text" name="käyttäjätunnus">
-        <p>Salasana: </p>
-        <input type="text" name="salasana">
-        <p>Salasana uudelleen: </p>
-        <input type="text" name="salasana uudelleen">
+    <title>Sing up</title>   
+    <h1>Create account</h1>
+    <form action="/home_page" method="POST">
+        <p>Username: </p>
+        <input type="text" name="username" placeholder="Enter username">
+        <p>Password: </p>
+        <input type="password" name="password1" placeholder="Enter password">
+        <p>Retype password: </p>
+        <input type="password" name="password2" placeholder="Enter password">
+        <div class="button-container">
+            <button type="submit" class="button">Sign up</button>
+        </div>
     </form>
-    <div class="button-container">
-        <a href="/homepage" class="button">Luo uusi käyttäjä</a>
 
 </body>
 </html>

@@ -1,0 +1,109 @@
+@import url('https://fonts.cdnfonts.com/css/press-start-2p');
+
+body {
+    background: #15171a;
+    color: #cecccc;
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #121212;
+    height: 65px;
+    width: 100%;   
+}
+.logo{
+    float: left;
+    display: inline-block;
+    text-align: center;
+    color: #03703c;
+    font-size: 20px;
+    font-family: 'Press Start 2P';font-size: 22px;
+    padding: 10px;
+    text-decoration: None;
+    margin-left: 30px;
+}
+
+#searchbar {
+    background-color: #37383b;
+    color: #F0F0F0;
+    border: none;
+    border-radius: 20px; 
+    padding: 10px; 
+    width: 50%; 
+    margin: 0 auto; 
+}
+#searchbar::placeholder {
+    color: #F0F0F0;
+    font-family: 'Courier New', Courier, monospace;
+}
+.button-container {
+    display: center;
+    background-color: #03703c;
+    border-radius: 20px;
+    margin-right: 30px;
+   }
+
+.logoff {
+    color: #F0F0F0;
+    float: center;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    text-decoration: None;
+    max-width: 100%; 
+    margin: 0 auto; 
+}
+
+h1 {
+    margin-left: 40px;
+}
+
+h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 17%;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0px;
+    font-size: 18px;
+    color: #6d6f74;
+}
+
+ul li {
+    margin-left: 20%; 
+    margin-bottom: 20px;
+}
+ul li:not(:has(a)) {
+    background-color: #121212;
+    margin-left: 20%; 
+    margin-right: 20%;
+    padding: 5px; 
+}
+
+ul li a:hover {
+    background-color: #03703c;
+    transition: background-color 0.3s ease; 
+}
+
+a {
+    text-decoration: None;
+    color: #cecccc;
+    margin-left:80px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #33464C;
+}
+
+
