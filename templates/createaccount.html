@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/create_acc.css"/>
-    <!--link rel="stylesheet" type="text/css" href="{{url_for('static', filename="create_acc.css")}}"/-->
+    <!--link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/create_acc.css"/-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="create_acc.css")}}"/>
      
 </head>
 <body>
     <title>Sing up</title>   
     <h1>Create account</h1>
-    <form action="/home_page" method="POST">
+    {% if not passwords_match %}
+    <p class="error">Passwords don't match. Please try again.</p>
+    {% endif %}
+    <form action="/create_account" method="POST">
         <p>Username: </p>
         <input type="text" name="username" placeholder="Enter username">
         <p>Password: </p>
-        <input type="password" name="password1" placeholder="Enter password">
+        <input type="password" name="password" placeholder="Enter password">
         <p>Retype password: </p>
-        <input type="password" name="password2" placeholder="Enter password">
+        <input type="password" name="password1" placeholder="Enter password">
         <div class="button-container">
             <button type="submit" class="button">Sign up</button>
         </div>
