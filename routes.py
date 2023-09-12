@@ -56,16 +56,16 @@ def logout():
     return redirect("/")
 
 @app.route("/rooms/<int:room_id>")
-def chatroom(room_id):
+def room(room_id):
     room_name, chat_conent = chats.roompage_data(room_id)
-    return render_template("rooms.html", name = session.get("username"), room_name=room_name, chat_content=chat_conent)
+    return render_template("rooms.html", name=session.get("username"), room_name=room_name, chat_content=chat_conent)
 
 
-@app.route("/chat")
-def chat():
-    return "tässä on otsikko ja tsätti"
-# this is the page for a 1 chat starts with first message and you scroll down the msgs and each are separated with a line. also lines on the borders
-#so the convo is in the middle of the screen 
+@app.route("/chat/<int:chat_id>")
+def chat(chat_id):
+    chat_name, messages = chats.chat_data(chat_id)
+    return render_template("chat.html", name=session.get("username"), chat_name=chat_name, messages=messages )
+
 
 
 
