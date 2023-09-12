@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <!--link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/chatroom.css"/-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="chatroom.css")}}"/>
+     
+</head>
+<body>
+    <title>Rooms</title>
+    <header>
+        <a href="/home_page" class="logo">TechTalk</a>
+        </div>
+        <input id="searchbar" type="text" placeholder="Search topics and chats..">
+        <div class="button-container">
+            <a href="/logout" class="logoff">Log off</a>
+        </div>
+    </header>
+    <h1>Hello, {{name}}!</h1>
+    <h2> {{room_name}}</h2>
+    <!--- LISÄÄ + NEW CHAT NAPPULA-->
+    <hr>
+    <h3>CHATS</h3>
+    <ul>
+        {% for chat_id, chat_name in chat_content %}
+        <li><a href="/chat/{{ chat_id }}">{{ chat_name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -5,8 +5,14 @@
 </head>
 <body>
     <title>Login</title>   
+    <header>
+        <a href="/" class="logo">TechTalk</a>
+    </header>
     <h1>Login to your account</h1>
-    <form action="/home_page" method="POST">
+    {% if not account_check %}
+    <p class="error">Wrong username or password. Please try again</p>
+    {% endif %}
+    <form action="/sign_in" method="POST">
         <p>Username: </p>
         <input type="text" name="username" placeholder="Enter username">
         <p>Password: </p>
