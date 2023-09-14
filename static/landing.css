@@ -1,8 +1,9 @@
 @import url('https://fonts.cdnfonts.com/css/press-start-2p');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 body {
     background: #121212;
     color: #F0F0F0;
-    font-family: monospace;
+    font-family: 'Poppins';
     text-align: center;
     align-items: center;
     margin-top: 25vh;
@@ -46,12 +47,13 @@ h2 {
 
 .button {
 
-    padding: 15px 30px;
+    padding: 10px 20px;
     background-color: #03703c;
     text-decoration: none;
     color: #F0F0F0;
     cursor: pointer;
     font-size: 20px;
-    border-radius: 0.5rem;
+    border-radius: 20px;
     z-index: 0;
+    border: none;
 }

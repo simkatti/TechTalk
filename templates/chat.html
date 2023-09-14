@@ -21,14 +21,15 @@
             <small>{{ time }}</small>
             <hr>
         {% endfor %}
-
-        <form action="/chat" method="POST">
+        <input type="hidden" name="chat_id" value="{{ chat_id }}">
+        <form action="/chat/{{ chat_id }}" method="POST">
+            
+            <input type="hidden" name="chat_id" value="{{ chat_id }}">
             <p>Reply to this chat:</p>
             <br>
-            <textarea name="new_message" rows="10" cols="70"></textarea>
+            <textarea name="new_message" rows="10" cols="60"></textarea>
             <br>
             <input type="submit" value="Send">
         </form>
     </div>
-    
-
+</body>

@@ -27,14 +27,18 @@ def roompage_data(room_id):
     result_chats = db.session.execute(sql_chats, {"room_id": room_id})
     chat_titles = result_chats.fetchall()
     chat_content = []
+    count = 0
 
     if chat_titles:
         for row in chat_titles:
             chat_id = row[0]
             chat_name = row[1]
             chat_content.append((chat_id, chat_name))
-#viestien määrä
-    return room_name, chat_content
+            sql_count = text("SELECT count(chat_id) FROM messages WHERE chat_id=:chat_id")
+            result = db.session.execute(sql_count, {"chat_id": chat_id})
+            count = result.fetchone()
+
+    return room_name, chat_content, count
 
 def chat_data(chat_id):
     sql = text("SELECT name FROM chats WHERE id = :chat_id;")
@@ -49,10 +53,43 @@ def chat_data(chat_id):
     for row in all_messages:
         one_message = row[0]
         timestamp = row[1]
-        # Format the timestamp as a string
         formatted_timestamp = datetime.strftime(timestamp, "%Y-%m-%d %H:%M:%S")
         messages.append((one_message, formatted_timestamp))
 
     return chat_name, messages
 
+def send(message, chat_id):
+    sql = text("INSERT INTO messages (message, time, chat_id) VALUES (:message, NOW(), :chat_id);")
+    db.session.execute(sql, {"message": message, "chat_id": chat_id})
+    db.session.commit()
+    return True
 
+def add_room(category, name):
+    category_sql= text("SELECT id FROM categories WHERE name=:category;")
+    result = db.session.execute(category_sql, {"category": category})
+    category_id = result.fetchone()
+    if category_id:
+        sql = text("INSERT INTO rooms (name, category_id) VALUES (:name, :category_id);")
+        db.session.execute(sql, {"name": name, "category_id": category_id[0]})
+        db.session.commit()
+        return True
+    else:
+        return False
+    
+def add_chat(name, message, room_id):
+    sql_chats = text("INSERT INTO chats (name, room_id) VALUES (:name, :room_id) RETURNING id;")
+    sql_result = db.session.execute(sql_chats, {"name": name, "room_id": room_id})
+    chat_row = sql_result.fetchone()
+
+    sql_result.close()
+
+    if chat_row is not None:
+        chat_id = chat_row[0]
+        print(chat_id)
+        sql = text("INSERT INTO messages (message, time, chat_id) VALUES (:message, NOW(), :chat_id);")
+        db.session.execute(sql, {"message": message, "chat_id": chat_id})
+        db.session.commit()
+        return chat_id
+    else:
+        return False
+    

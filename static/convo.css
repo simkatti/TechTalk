@@ -1,8 +1,9 @@
 @import url('https://fonts.cdnfonts.com/css/press-start-2p');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 body {
     background: #121212;
     color: #cecccc;
-    font-family: monospace;
+    font-family: 'Poppins';
     margin: 0;
     padding: 0;
 }
@@ -15,7 +16,7 @@ header {
     background-color: #121212;
     height: 65px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0;
 }
 
 .logo {
@@ -43,7 +44,7 @@ header {
 
 #searchbar::placeholder {
     color: #F0F0F0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Poppins';
 }
 
 .button-container {
@@ -58,7 +59,7 @@ header {
     display: inline-block;
     text-align: center;
     font-size: 12px;
-    padding: 10px;
+    padding: 10px 20px;
     text-decoration: None;
     max-width: 100%;
     margin: 0 auto;
@@ -66,6 +67,11 @@ header {
 
 h1 {
     margin-left: 40px;
+    font-size: 25px;
+    margin-top: 2%;
+}
+h2 {
+    margin-bottom: 5%;
 }
 
 .container {
@@ -82,25 +88,27 @@ h1 {
 hr {
     border: none;
     border-top: 3px solid #33464C;
+    margin-bottom: 0;
 }
 
 p {
-    font-size: 16px;
+    font-size: 17px;
 }
 
 textarea {
     background-color: #37383b;
     color: white;
     font-size: 16px;
+    font-family: 'Poppins';
+    width: 100%;
 }
 
 input[type="submit"] {
     background-color: #03703c;
     border-radius: 20px;
-    font-size: 12px;
     color: #F0F0F0;
     text-align: center;
-    padding: 10px;
+    padding: 10px 20px;
     text-decoration: none;
     border: none;
 }

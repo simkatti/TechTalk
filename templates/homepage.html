@@ -15,16 +15,47 @@
         </div>
     </header>
     <h1>Hello, {{name}}!</h1>
-    <h2>Categories</h2>
-    <!--div class="popup-container">
-        <input type="button" id="popup">
-        <label for="popup" class ="click-me">+ New room</label>
+    <h2>Categories<button id="popup-button" class="popup-button">+ new room</button></h2>
+    <div id="mypopup" class="popup">
+        <div class="popup-content">
+            <p id="popuptitle">Create a new room</p>
+            <form action="/home_page" method="POST">
+                <label for="category">Choose a category for your room:</label>
+                <select name="category" id="category">
+                    <option value="" disabled selected>Select a category</option>
+                    {% for category, room_names in titles.items() %}
+                        <option value="{{ category }}">{{ category }}</option>
+                    {% endfor %}
+                </select>                
+                <br><br>
+                <p>Room name:</p>
+                <textarea name="room_title" rows="1" cols="1"></textarea>
+                <a href="#" class="closePopup">X</a>
+                <div class="newroom_button">
+                    <input type="submit" class="roombutton">Create</input>
+                </div>
+            </form>
+        </div>
     </div>
-    <from action="#" metod="POST">
-        <p>Create a new chat room</p>
-        <p>Choose a category</p>
-        <input type="radio" name ="category" value= #hae tietokannasta.>
-    </from-->
+    <script>
+        var popupButton = document.getElementById("popup-button");
+        var myPopup = document.getElementById("mypopup");
+        var closePopup = document.querySelector(".closePopup");
+    
+        popupButton.addEventListener("click", function () {
+            myPopup.style.display = "block";
+        });
+    
+        closePopup.addEventListener("click", function () {
+            myPopup.style.display = "none";
+        });
+    
+        window.addEventListener("click", function (event) {
+            if (event.target == myPopup) {
+                myPopup.style.display = "none";
+            }
+        });
+    </script>
     <hr>
     <ul>
         {% for category, room_names in titles.items() %}
