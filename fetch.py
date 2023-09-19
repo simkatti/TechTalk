@@ -33,34 +33,36 @@ def roompage_data(room_id):
         for row in chat_titles:
             chat_id = row[0]
             chat_name = row[1]
-            chat_content.append((chat_id, chat_name))
             sql_count = text("SELECT count(chat_id) FROM messages WHERE chat_id=:chat_id")
             result = db.session.execute(sql_count, {"chat_id": chat_id})
             count = result.fetchone()
+            chat_content.append((chat_id, chat_name, count))
 
-    return room_name, chat_content, count
+    return room_name, chat_content
 
 def chat_data(chat_id):
     sql = text("SELECT name FROM chats WHERE id = :chat_id;")
     result = db.session.execute(sql, {"chat_id": chat_id})
     chat_name = result.scalar()
 
-    sql_messages = text("SELECT message, time FROM messages WHERE chat_id = :chat_id;")
+    sql_messages = text("SELECT id, message, time, user_id FROM messages WHERE chat_id = :chat_id;")
     result_messages = db.session.execute(sql_messages, {"chat_id": chat_id})
     all_messages = result_messages.fetchall()
 
     messages = []
     for row in all_messages:
-        one_message = row[0]
-        timestamp = row[1]
-        formatted_timestamp = datetime.strftime(timestamp, "%Y-%m-%d %H:%M:%S")
-        messages.append((one_message, formatted_timestamp))
+        message_id = row[0]
+        one_message = row[1]
+        timestamp = row[2]
+        user_id = row[3]
+        time = datetime.strftime(timestamp, "%Y-%m-%d %H:%M:%S")
+        messages.append((message_id, one_message, time, user_id))
 
     return chat_name, messages
 
-def send(message, chat_id):
-    sql = text("INSERT INTO messages (message, time, chat_id) VALUES (:message, NOW(), :chat_id);")
-    db.session.execute(sql, {"message": message, "chat_id": chat_id})
+def send(message, chat_id, user_id):
+    sql=text("INSERT INTO messages (message, time, chat_id, user_id) VALUES (:message, NOW(), :chat_id, :user_id);")
+    db.session.execute(sql, {"message": message, "chat_id": chat_id, "user_id": user_id})
     db.session.commit()
     return True
 
@@ -76,7 +78,7 @@ def add_room(category, name):
     else:
         return False
     
-def add_chat(name, message, room_id):
+def add_chat(name, message, user_id, room_id):
     sql_chats = text("INSERT INTO chats (name, room_id) VALUES (:name, :room_id) RETURNING id;")
     sql_result = db.session.execute(sql_chats, {"name": name, "room_id": room_id})
     chat_row = sql_result.fetchone()
@@ -86,10 +88,27 @@ def add_chat(name, message, room_id):
     if chat_row is not None:
         chat_id = chat_row[0]
         print(chat_id)
-        sql = text("INSERT INTO messages (message, time, chat_id) VALUES (:message, NOW(), :chat_id);")
-        db.session.execute(sql, {"message": message, "chat_id": chat_id})
+        sql = text("INSERT INTO messages (message, time, chat_id, user_id) VALUES (:message, NOW(), :chat_id, :user_id);")
+        db.session.execute(sql, {"message": message, "chat_id": chat_id, "user_id": user_id})
         db.session.commit()
         return chat_id
     else:
         return False
     
+def delete(message_id):
+    sql = text("DELETE FROM messages WHERE id=:id;")
+    db.session.execute(sql, {"id": message_id})
+    db.session.commit()
+    return True
+
+def check_messagecount(chat_id):
+    sql = text("SELECT count(chat_id) FROM messages WHERE chat_id=:chat_id")
+    result = db.session.execute(sql, {"chat_id": chat_id})
+    count = result.fetchone()
+    if count and count[0]==0:
+        delete_room = text("DELETE FROM chats WHERE id=:chat_id;")
+        db.session.execute(delete_room, {"chat_id": chat_id})
+        db.session.commit()
+        return True
+    else:
+        return False

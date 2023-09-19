@@ -13,6 +13,7 @@ def login(username, password):
     else:
         if check_password_hash(user.password, password):
             session["username"] = username
+            session["id"] = user.id
             return True
         else:
             return False

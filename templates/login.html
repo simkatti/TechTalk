@@ -12,11 +12,11 @@
     {% if not account_check %}
     <p class="error">Wrong username or password. Please try again</p>
     {% endif %}
-    <form action="/sign_in" method="POST">
+    <form action="/login" method="POST">
         <p>Username: </p>
-        <input type="text" name="username" placeholder="Enter username">
+        <input type="text" name="username" placeholder=" Enter username">
         <p>Password: </p>
-        <input type="password" name="password" placeholder="Enter password">
+        <input type="password" name="password" placeholder=" Enter password">
         <div class="button-container">
             <button type="submit" class="button">Login</button>
         </div>

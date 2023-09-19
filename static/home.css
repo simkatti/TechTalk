@@ -190,6 +190,7 @@ textarea {
     color: #F0F0F0;
     text-decoration: none;
     font-size: 20px;
+    font-family:sans-serif;
 }
 
 .show {
@@ -224,7 +225,7 @@ ul li:not(:has(a)) {
 }
 
 ul li a:hover {
-    background-color: #03703c;
+    color: #03703c;
     transition: background-color 0.3s ease; 
 }
 
@@ -238,5 +239,10 @@ hr {
     border: none;
     border-top: 1px solid #33464C;
 }
+.error {
+    margin-left: 20%;
+    color: rgb(242, 5, 5);
+}
+
 
 

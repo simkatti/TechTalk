@@ -1,15 +1,14 @@
 from flask import redirect, render_template, request, session
 from app import app
-from db import db
 import users
-import chats
+import fetch
 
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
-@app.route("/sign_in", methods=["GET", "POST"])
+@app.route("/login", methods=["GET", "POST"])
 def signin():
     account_check = True
     if request.method == "POST":
@@ -19,7 +18,7 @@ def signin():
         if not users.login(username, password):
             account_check = False
         else:
-            return redirect("/home_page")   
+            return redirect("/homepage")   
     return render_template("login.html", account_check=account_check)    
 
 
@@ -40,20 +39,21 @@ def createaccount():
         elif password != password1:
             passwords_match = False
         elif passwords_match and username_ok and users.register(username, password):
-            return redirect("/home_page")
+            return redirect("/homepage")
     return render_template("createaccount.html", passwords_match=passwords_match, username_ok=username_ok)
 
-@app.route("/home_page", methods=["GET", "POST"])
+@app.route("/homepage", methods=["GET", "POST"])
 def home():
-    add_room_ok=True #need to do
+    add_room_ok=True #need to fix
     if "username" not in session:
         return redirect("/")
-    titles = chats.homepage_data()
+    titles = fetch.homepage_data()
     if request.method == "POST":
         category = request.form["category"]
         name = request.form["room_title"]
-        if chats.add_room(category, name):
-            return redirect("/home_page")
+        if len(name) >2 and category != "":
+            if fetch.add_room(category, name):
+                return redirect("/homepage")
         else:
             add_room_ok=False
     return render_template("homepage.html", name = session.get("username"), titles=titles, add_room_ok=add_room_ok)
@@ -66,31 +66,46 @@ def logout():
 @app.route("/rooms/<int:room_id>", methods=["GET", "POST"])
 def room(room_id):
     add_chat_ok = True
-    room_name, chat_conent, count = chats.roompage_data(room_id)
+    room_name, chat_conent = fetch.roompage_data(room_id)
     if request.method =="POST":
         name = request.form["chat_title"]
         message = request.form["message"]
-        chat_id = chats.add_chat(name, message, room_id)
-        if chat_id:
-            return redirect(f"/chat/{chat_id}")
+        user_id = session.get("id")
+        if len(name)>2 and len(message)>5:
+            chat_id = fetch.add_chat(name, message, user_id, room_id)
+            if chat_id:
+                return redirect(f"/chat/{chat_id}")
         else:
             add_chat_ok=False
 
-    return render_template("rooms.html", name=session.get("username"), room_name=room_name, chat_content=chat_conent, count=count, add_chat_ok=add_chat_ok, room_id=room_id)
+    return render_template("rooms.html", name=session.get("username"), room_name=room_name, chat_content=chat_conent, add_chat_ok=add_chat_ok, room_id=room_id)
 
 
 @app.route("/chat/<int:chat_id>", methods=["GET", "POST"])
 def chat(chat_id):
-    chat_sent_ok=True #need to do
-    chat_name, messages = chats.chat_data(chat_id)
+    chat_sent_ok=True 
+    chat_delete = True
+    chat_name, messages= fetch.chat_data(chat_id)
     if request.method == "POST":
-        message = request.form["new_message"]
-        if chats.send(message, chat_id):
-            return redirect(f"/chat/{chat_id}")
-        else:
-            chat_sent_ok = False
-    return render_template("chat.html", name=session.get("username"), chat_name=chat_name, messages=messages, chat_id=chat_id, chat_sent_ok=chat_sent_ok)
+        if "message_id" in request.form:
+            message_id = int(request.form["message_id"])
+            if fetch.delete(message_id):
+                count = fetch.check_messagecount(chat_id)
+                if count:
+                    return redirect("/homepage")
+                else:
+                    return redirect(f"/chat/{chat_id}")
+            else:
+                chat_delete = False
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return "Page not found: " + str(e), 404
+        else:
+            message = request.form["new_message"]
+            if len(message) > 1:
+                user_id = session.get("id")
+                if fetch.send(message, chat_id, user_id):
+                    return redirect(f"/chat/{chat_id}")
+            else:
+                chat_sent_ok = False
+    return render_template("chat.html", name=session.get("username"), chat_name=chat_name, messages=messages, chat_id=chat_id, chat_sent_ok=chat_sent_ok, chat_delete=chat_delete)
+
+# delete chats???
