@@ -13,3 +13,5 @@ Käyttäjä voi:
 Kirjautumisen tai käyttäjätilin luonnin jälkeen etusivulla näkyy huoneita kategorioittain. Klikatessa mieleistä huonetta näet huoneessa olevat keskustelut. Voit luoda uusia huoneita ja viestiketjuja sekä vastata jo olemassa oleviin viestiketjuihin. Voit myös poistaa lähettämäsi viestit. Kun ketjussa ei ole enää viestejä, chätti poistuu tietokannasta eikä sitä löydy enää. 
 
 Hakutoiminto fukntio on vielä työn alla, joten se ei ole vielä käytössä. Muuten app alkaa olla viimeistelyä vaille valmis. 
+
+sovellus ei ole (ainakaan vielä) testattavissa tuotannossa. requirements.txt ja schema.sql on ajan tasalla.
