@@ -1,13 +1,15 @@
 TechTalk
 
-TechTalk on sovelluksen nimi ja se on keskustleualusta erityisesti tietojenkäsittelytieteiden opiskelijoille ja opettajille.
+TechTalk on sovelluksen nimi ja se on redditin/jodelin tyylinen keskustleualusta erityisesti tietojenkäsittelytieteiden opiskelijoille ja opettajille.
 Käyttäjä voi:
 - kirjautua sisään/ulos ja luoda käyttäjätilin
-- kirjauduttuaan sisään nähdä eri kanavia eri kategorioista
+- kirjauduttuaan sisään nähdä eri huoneita(kanavia) eri kategorioista
 - aloittaa uuden keskustelun
 - vastata jo olemassa oleviin keskusteluihin
 - nähdä kirjoitetut viestit ja aloitetut keskustelut
-- hakea kanavia ja/tai keskusteluita hakusanoilla
-- poistaa luomansa keskustelun
+- hakea kanavia ja/tai keskusteluita hakusanoilla (työn alla)
+- poistaa lähettämiä viestejä.
 
-Sovelluksessa näkyy aloitussivu, kirjatumissivu, aloitussivu kirjautuneille (jossa näkyy eri kanavia) ja eri kanavien sivut (joissa näkyy eri keskusteluja) Esimerkki kategorioita voisi olla esimerkiksi: kurssit, pelaaminen, urheilu, kandi, maisteri jne. Jokaisen kategorian sisällä on kanavia kategoriaan liittyen esim. kurssi kategoriasta löytyy kanavia kursseille ja jokaisella kanavalla on X kurssiin littyviä keskusteluja. Näin alusta pysyy siistinä ja keskustelut on helppo löytää kanavien perusteella. 
+Kirjautumisen tai käyttäjätilin luonnin jälkeen etusivulla näkyy huoneita kategorioittain. Klikatessa mieleistä huonetta näet huoneessa olevat keskustelut. Voit luoda uusia huoneita ja viestiketjuja sekä vastata jo olemassa oleviin viestiketjuihin. Voit myös poistaa lähettämäsi viestit. Kun ketjussa ei ole enää viestejä, chätti poistuu tietokannasta eikä sitä löydy enää. 
+
+Hakutoiminto fukntio on vielä työn alla, joten se ei ole vielä käytössä. Muuten app alkaa olla viimeistelyä vaille valmis. 
