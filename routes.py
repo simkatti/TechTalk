@@ -26,6 +26,7 @@ def signin():
 def createaccount():
     passwords_match = True
     username_ok = True
+    username_exists = True
     if request.method == "POST":
         username = request.form["username"]
         if len(username) < 1 or len(username) > 20:
@@ -38,13 +39,16 @@ def createaccount():
             passwords_match = False
         elif password != password1:
             passwords_match = False
-        elif passwords_match and username_ok and users.register(username, password):
-            return redirect("/homepage")
-    return render_template("createaccount.html", passwords_match=passwords_match, username_ok=username_ok)
+        elif passwords_match and username_ok: 
+            if users.register(username, password):
+                return redirect("/homepage")
+            else:
+                username_exists=False
+    return render_template("createaccount.html", passwords_match=passwords_match, username_ok=username_ok, username_exists=username_exists)
 
 @app.route("/homepage", methods=["GET", "POST"])
 def home():
-    add_room_ok=True #need to fix
+    add_room_ok=True 
     if "username" not in session:
         return redirect("/")
     titles = fetch.homepage_data()
@@ -108,4 +112,12 @@ def chat(chat_id):
                 chat_sent_ok = False
     return render_template("chat.html", name=session.get("username"), chat_name=chat_name, messages=messages, chat_id=chat_id, chat_sent_ok=chat_sent_ok, chat_delete=chat_delete)
 
-# delete chats???
+@app.route("/searchresults", methods=["GET", "POST"])
+def searchbar():
+    results_found = True
+    query = request.args["query"]
+    content = fetch.search(query)
+    if not content:
+        results_found = False
+
+    return render_template("search.html", name=session.get("username"), content=content, results_found=results_found)

@@ -60,3 +60,7 @@ input[type="password"]{
     font-size: 14px;
     border-radius: 20px;
 }
+
+.error {
+    color: rgb(166, 0, 0);
+}

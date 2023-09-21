@@ -1,7 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/press-start-2p');
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 body {
-    background: #15171a;
+    background: #121212;
     color: #cecccc;
     font-family: 'Poppins';
     margin: 0;
@@ -23,11 +23,13 @@ header {
     font-size: 24px;
     text-decoration: none;
     margin-left: 30px;
+    margin-top: 10px;
 }
 
 #searchbar-container {
     flex-grow: 1;
-    margin-left: 5%;
+    margin-left: 10%;
+    margin-top:10px;
 }
 
 #searchbar {
@@ -36,7 +38,7 @@ header {
     border: none;
     border-radius: 20px;
     padding: 10px;
-    width: 82.5%;
+    width: 75%;
     box-sizing: border-box;
 }
 
@@ -47,8 +49,8 @@ header {
 .search-icon {
     color:#F0F0F0;
     position: absolute;
-    left: 75%;
-    top: 22px;
+    left: 70.5%;
+    top: 27px;
     background-color: #03703c;
     border: none;
     padding: 10px 20px;
@@ -62,6 +64,7 @@ header {
     background-color: #03703c;
     border-radius: 20px;
     margin-right: 30px;
+    margin-top: 10px;
 }
 
 .logoff {
@@ -79,119 +82,18 @@ h1 {
     font-size: 25px;
     margin-top: 2%;
 }
-
 h2 {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    margin-bottom: 20px;
-    margin-left: 20%;
-    font-size: 20px;
-    margin-top:40px;
-}
-.popup-content button {
-    display: block;
-}
-
-.popup-button {
-    background-color: #03703c;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 10px;
-    cursor: pointer;
-    font-family: 'Poppins';
-    margin-right: 26%;
-}
-.popup {
-    position: fixed;
-    z-index: 10;
-    left: 25%;
-    top: 5%;
-    width: 100%;
-    height: auto;
-    overflow: auto;
-    background-color: none;
-    display: none;
-}
-.popup-content {
-    position: relative;
-    background-color: #121212;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: 20px;
-    width: 40%;
-    color: #121212;
-    font-size: 16px;
-    border: #03703c;
-}
-
-#popuptitle {
-    margin-left: 35%;
-    margin-top:5%;
-    margin-bottom:5%;
-    font-size: 18px;
-    color: #F0F0F0;
-}
-
-p {
-    margin-left: 5%;
-    color: #cecccc;
-}
-
-textarea {
-    font-size: 16px;
-    color:#F0F0F0;
-    padding: 10px;
-    width: 90%; 
-    max-width: 90%;
-    height: 35%;
-    max-height: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 2%;
-    box-sizing: border-box; 
-    background-color: #37383b;
-    font-family: 'Poppins';
-}
-.newchat_button {
-    text-align: center;
-    margin-left: 5%;
     margin-top: 0;
-}
-.chatbutton {
-    font-family: 'Poppins';
-    padding: 10px 20px;
-    background-color: #03703c;
-    text-decoration: none;
-    color: #F0F0F0;
-    cursor: pointer;
-    font-size: 12px;
-    border-radius: 20px;
-    border: none;
-    z-index: 0;
+    margin-left: 35%;
 }
 
-
-.closePopup {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #F0F0F0;
-    text-decoration: none;
+.error {
+    margin-left: 32%;
+    margin-top: 10%;
+    color: rgb(166, 0, 0);
     font-size: 20px;
-    font-family:sans-serif;
 }
 
-.show {
-    display: block;
-}
-
-h3 {
-    margin-left: 20%;
-    margin-bottom: 30px;
-    font-size: 22px;
-}
 
 ul {
     list-style-type: none;
@@ -238,9 +140,3 @@ hr {
     border: none;
     border-top: 1px solid #33464C;
 }
-
-.error {
-    margin-left: 20%;
-    color: rgb(242, 5, 5);
-}
-

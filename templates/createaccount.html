@@ -14,6 +14,8 @@
     <p class="error">Passwords don't match. Please try again.</p>
     {% elif not username_ok %}
     <p class="error">Your username should have 1-20 characters</p>
+    {% elif not username_exists %}
+    <p class="error">Username already exists.</p>
     {% endif %}
     <form action="/create_account" method="POST">
         <p>Username: </p>

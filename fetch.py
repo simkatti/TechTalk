@@ -102,7 +102,7 @@ def delete(message_id):
     return True
 
 def check_messagecount(chat_id):
-    sql = text("SELECT count(chat_id) FROM messages WHERE chat_id=:chat_id")
+    sql = text("SELECT count(chat_id) FROM messages WHERE chat_id=:chat_id;")
     result = db.session.execute(sql, {"chat_id": chat_id})
     count = result.fetchone()
     if count and count[0]==0:
@@ -112,3 +112,24 @@ def check_messagecount(chat_id):
         return True
     else:
         return False
+    
+def search(query):
+    searchresult = []
+    if query != "":
+        sql = text("SELECT DISTINCT chat_id FROM messages WHERE message LIKE :query;")
+        search = db.session.execute(sql, {"query": "%" + query + "%"})
+        chat_ids = [chat_id[0] for chat_id in search]
+
+        if chat_ids:
+            chat = text("SELECT id, name FROM chats WHERE id IN :chat_ids;")
+            chat_info = db.session.execute(chat, {"chat_ids": tuple(chat_ids)})
+            chat_data = chat_info.fetchall()
+
+            for c_id, c_name in chat_data:
+                message_count = text("SELECT count(chat_id) FROM messages WHERE chat_id=:chat_id;")
+                chat_count = db.session.execute(message_count, {"chat_id": c_id})
+                count = chat_count.fetchone()
+                searchresult.append((c_id, c_name, count[0]))
+
+
+    return searchresult

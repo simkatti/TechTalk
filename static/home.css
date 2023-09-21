@@ -5,31 +5,29 @@ body {
     color: #cecccc;
     font-family: 'Poppins';
     margin: 0;
-    padding: 0;
-
 }
 
 header {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: flex-start;
     background-color: #121212;
-    height: 65px;
-    width: 100%;
-    margin-top: 0px;
+    height: 80px;
 }
 
 .logo {
     display: inline-block;
     text-align: center;
     color: #03703c;
-    font-size: 20px;
     font-family: 'Press Start 2P';
-    font-size: 22px;
-    padding: 10px;
+    font-size: 24px;
     text-decoration: none;
     margin-left: 30px;
+}
+
+#searchbar-container {
+    flex-grow: 1;
+    margin-left: 5%;
 }
 
 #searchbar {
@@ -38,22 +36,33 @@ header {
     border: none;
     border-radius: 20px;
     padding: 10px;
-    width: 50%;
-    margin-left: 10%;
-    margin-right: 15%;
+    width: 83%;
+    box-sizing: border-box;
 }
 
 #searchbar::placeholder {
     color: #F0F0F0;
     font-family: 'Poppins';
 }
+.search-icon {
+    color:#F0F0F0;
+    position: absolute;
+    left: 75%;
+    top: 22px;
+    background-color: #03703c;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Poppins';
+    font-size: 11px;
+    border-radius: 20px;
+}
 
 .button-container {
-    display: center;
     background-color: #03703c;
     border-radius: 20px;
     margin-right: 30px;
-   }
+}
 
 .logoff {
     color: #F0F0F0;
@@ -62,7 +71,6 @@ header {
     font-size: 12px;
     padding: 10px 20px;
     text-decoration: None;
-    max-width: 100%; 
     margin: 0 auto; 
 }
 
