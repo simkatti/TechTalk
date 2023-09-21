@@ -131,5 +131,4 @@ def search(query):
                 count = chat_count.fetchone()
                 searchresult.append((c_id, c_name, count[0]))
 
-
     return searchresult

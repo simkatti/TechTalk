@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <head>
-    <!--link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/convo.css"/-->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="convo.css")}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="chat.css")}}"/>
     <title>Chat</title>
 </head>
 <body>
     <header>
-        <a href="/homepage" class="logo">TechTalk</a>
+        <a href="/home" class="logo">TechTalk</a>
         <div id="searchbar-container">
             <form action="/searchresults" method="GET">
                 <div class="searchbar-inner">
@@ -80,3 +79,4 @@
         });
     </script>
 </body>
+</html>

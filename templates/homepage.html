@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <head>
-    <!--link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/home.css"/-->
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="home.css")}}"/>
     <title>Home</title> 
 </head>
 <body>
     <header>
-        <a href="/homepage" class="logo">TechTalk</a>
+        <a href="/home" class="logo">TechTalk</a>
         <div id="searchbar-container">
             <form action="/searchresults" method="GET">
                 <div class="searchbar-inner">
@@ -27,7 +26,7 @@
     <div id="mypopup" class="popup">
         <div class="popup-content">
             <p id="popuptitle">Create a new room</p>
-            <form action="/homepage" method="POST">
+            <form action="/home" method="POST">
                 <label for="category">Choose a category for your room:</label>
                 <select name="category" id="category">
                     <option value="">Select a category</option>
@@ -38,7 +37,7 @@
                 <br><br>
                 <p>Room name:</p>
                 <textarea name="room_title" rows="1" cols="1"></textarea>
-                <a href="/homepage" class="closePopup">X</a>
+                <a href="/home" class="closePopup">X</a>
                 <div class="newroom_button">
                     <button type="submit" class="roombutton">Create</button>
                 </div>
@@ -70,11 +69,10 @@
             <li>{{ category }}</li>
             <ul>
                 {% for room_id, room_name in room_names %}
-                <li><a href="/rooms/{{ room_id }}">{{ room_name }}</a></li>
+                <li><a href="/room/{{ room_id }}">{{ room_name }}</a></li>
                 {% endfor %}
             </ul>
         {% endfor %}
     </ul>
-
 </body>
 </html>

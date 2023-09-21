@@ -171,8 +171,6 @@ textarea {
     border: none;
     z-index: 0;
 }
-
-
 .closePopup {
     position: absolute;
     top: 20px;
@@ -182,24 +180,20 @@ textarea {
     font-size: 20px;
     font-family:sans-serif;
 }
-
 .show {
     display: block;
 }
-
 h3 {
     margin-left: 20%;
     margin-bottom: 30px;
     font-size: 22px;
 }
-
 ul {
     list-style-type: none;
     padding-left: 0px;
     font-size: 18px;
     color: #6d6f74;
 }
-
 ul li {
     margin-left: 15%; 
     margin-bottom: 20px;
@@ -218,27 +212,22 @@ ul li a:hover {
     color: #03703c;
     transition: background-color 0.3s ease; 
 }
-
 .message-count {
     color: #6d6f74;
 }
-
 .chat-devider {
     margin-right: 25%;
     margin-left: 6%;
 }
-
 a {
     text-decoration: None;
     color: #cecccc;
     margin-left:80px;
 }
-
 hr {
     border: none;
     border-top: 1px solid #33464C;
 }
-
 .error {
     margin-left: 20%;
     color: rgb(242, 5, 5);

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <head>
-    <!--link rel="stylesheet" href="/home/csimona/Documents/TKT/Tietokannat ja webohjelmointi/sovellus/static/chatroom.css"/-->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="chatroom.css")}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename="room.css")}}"/>
     <title>Rooms</title>
 </head>
 <body>
     <header>
-        <a href="/homepage" class="logo">TechTalk</a>
+        <a href="/home" class="logo">TechTalk</a>
         <div id="searchbar-container">
             <form action="/searchresults" method="GET">
                 <div class="searchbar-inner">
@@ -26,7 +25,7 @@
     {% endif %}
     <div id="mypopup" class="popup">
         <div class="popup-content">
-            <form action="/rooms/{{ room_id }}" method="POST">
+            <form action="/room/{{ room_id }}" method="POST">
                 <p id="popuptitle">Create a new chat</p>
                 <p>Title: </p>
                 <textarea name="chat_title" rows="1" cols="40"></textarea>
@@ -70,8 +69,6 @@
             <hr class="chat-devider">
         </li>
         {% endfor %}
-    </ul>
-    
-    
+    </ul> 
 </body>
 </html>

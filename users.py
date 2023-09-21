@@ -18,7 +18,6 @@ def login(username, password):
         else:
             return False
 
-
 def register(username, password):
     check_sql = text("SELECT 1 FROM users WHERE username=:username;")
     result = db.session.execute(check_sql, {"username": username})

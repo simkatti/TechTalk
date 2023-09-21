@@ -116,7 +116,7 @@ p {
 
 .popup-button {
     text-decoration: none;
-    color: rgb(134, 134, 134);
+    color: rgb(147, 1, 1);
     font: 'Poppins';
     cursor: pointer;
     font-size: 13px;
@@ -157,7 +157,7 @@ p {
 }
 
 .delete_chat_button {
-    margin-left: 40%;
+    margin-left: 30%;
     margin-bottom: 5%;
     margin-top: 20%;
 
