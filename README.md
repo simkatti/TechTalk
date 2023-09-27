@@ -16,3 +16,19 @@ Sovelluksen kaikki funktiot toimii. Kirjauduttasi sisään/luotuasi käyttäjät
 Sovellus alkaa omasta mielestä olla valmis. 
 
 Sovellus ei ole testattavissa tuotannossa. requirements.txt ja schema.sql ovat ajan tasalla. Lisää tietokantaan myös datacontent.sql mukaiset taulukot hyvän käyttökokemuksen takaamiseksi.  Sovellusta voi testata kurssin ohjeiden mukaan. 
+
+TESTAUS:
+Luo .env:
+DATABASE_URL=postgresql:///<tietokannan-nimi>
+SECRET_KEY=<salainen-avain>
+
+Terminaalissa:
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -r ./requirements.txt
+
+---aktivoi tietokanta start-pg.sh-----
+$ psql
+user=# CREATE DATABASE <tietokannan-nimi>;
+$ psql -d <tietokannan-nimi> < schema.sql
+$ psql -d <tietokannan-nimi> < datacontent.sql
