@@ -21,7 +21,7 @@
     <h1>Hello, {{name}}!</h1>
     <h2> {{room_name}} <button id="popup-button" class="popup-button">+ new chat</button></h2>
     {% if not add_chat_ok %}
-    <p class="error">Could not make a new chat. Please try again</p>
+    <p class="error">Could not make a new chat. Title should have 3 - 99 characters and message 5 - 999. Please try again</p>
     {% endif %}
     <div id="mypopup" class="popup">
         <div class="popup-content">
