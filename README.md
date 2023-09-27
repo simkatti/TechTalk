@@ -19,16 +19,16 @@ Sovellus ei ole testattavissa tuotannossa. requirements.txt ja schema.sql ovat a
 
 TESTAUS:
 Luo .env:
-DATABASE_URL=postgresql:///<tietokannan-nimi>
-SECRET_KEY=<salainen-avain>
+- DATABASE_URL=postgresql:///(tietokannan-nimi)
+- SECRET_KEY=(salainen avain)
 
 Terminaalissa:
-$ python3 -m venv venv
-$ source venv/bin/activate
-$ pip install -r ./requirements.txt
+- $ python3 -m venv venv
+- $ source venv/bin/activate
+- $ pip install -r ./requirements.txt
 
 ---aktivoi tietokanta start-pg.sh-----
-$ psql
-user=# CREATE DATABASE <tietokannan-nimi>;
-$ psql -d <tietokannan-nimi> < schema.sql
-$ psql -d <tietokannan-nimi> < datacontent.sql
+- $ psql
+- user=# CREATE DATABASE (tietokannan nimi);
+- $ psql -d (tietokannan nimi) < schema.sql
+- $ psql -d (tietokannan nimi) < datacontent.sql
