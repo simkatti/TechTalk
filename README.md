@@ -15,4 +15,4 @@ Sovelluksen kaikki funktiot toimii. Kirjauduttasi sisään/luotuasi käyttäjät
 
 Sovellus alkaa omasta mielestä olla valmis. 
 
-Sovellus ei ole testattavissa tuotannossa. requirements.txt ja schema.sql ovat ajan tasalla. Sovellusta voi testata kurssin ohjeiden mukaan. 
+Sovellus ei ole testattavissa tuotannossa. requirements.txt ja schema.sql ovat ajan tasalla. Lisää tietokantaan myös datacontent.sql mukaiset taulukot hyvän käyttökokemuksen takaamiseksi.  Sovellusta voi testata kurssin ohjeiden mukaan. 
