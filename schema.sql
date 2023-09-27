@@ -1,7 +1,7 @@
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    name TEXT UNIQUE,
-    password TEXT,
+    username TEXT UNIQUE,
+    password TEXT
 );
 
 CREATE TABLE categories(
@@ -25,6 +25,6 @@ CREATE TABLE messages (
     id SERIAL PRIMARY KEY,
     message TEXT,
     time TIMESTAMP,
-    chat_id INTEGER REFERENCES chats(id)
+    chat_id INTEGER REFERENCES chats(id),
     user_id INTEGER REFERENCES users(id)
-)
+);
