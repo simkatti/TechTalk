@@ -32,8 +32,8 @@ VALUES
     ('sitsit', 7),
     ('fuksileiri', 7),
     ('mihin tänään?', 7),
-    ('futis', 7),
-    ('sähly', 7),
+    ('futis', 8),
+    ('sähly', 8),
     ('unisport', 8);
 
 
