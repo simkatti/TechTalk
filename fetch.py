@@ -1,9 +1,14 @@
-from db import db
-from sqlalchemy.sql import text
 from datetime import datetime
+from sqlalchemy.sql import text
+from db import db
 
 def homepage_data():
-    sql = text("SELECT r.id AS room_id, r.name AS room_name, c.name AS category_name FROM rooms AS r JOIN categories AS c ON r.category_id = c.id ORDER BY c.name, r.name;")
+    sql = text(
+        "SELECT r.id AS room_id, r.name AS room_name, "
+        "c.name AS category_name "
+        "FROM rooms AS r "
+        "JOIN categories AS c ON r.category_id = c.id "
+        "ORDER BY c.name, r.name;")
     result = db.session.execute(sql)
     data = result.fetchall()
 
@@ -61,7 +66,9 @@ def chat_data(chat_id):
     return chat_name, messages
 
 def send(message, chat_id, user_id):
-    sql=text("INSERT INTO messages (message, time, chat_id, user_id) VALUES (:message, NOW(), :chat_id, :user_id);")
+    sql=text(
+        "INSERT INTO messages (message, time, chat_id, user_id) "
+        "VALUES (:message, NOW(), :chat_id, :user_id);")
     db.session.execute(sql, {"message": message, "chat_id": chat_id, "user_id": user_id})
     db.session.commit()
     return True
@@ -75,9 +82,8 @@ def add_room(category, name):
         db.session.execute(sql, {"name": name, "category_id": category_id[0]})
         db.session.commit()
         return True
-    else:
-        return False
-    
+    return False
+
 def add_chat(name, message, user_id, room_id):
     sql_chats = text("INSERT INTO chats (name, room_id) VALUES (:name, :room_id) RETURNING id;")
     sql_result = db.session.execute(sql_chats, {"name": name, "room_id": room_id})
@@ -88,13 +94,14 @@ def add_chat(name, message, user_id, room_id):
     if chat_row is not None:
         chat_id = chat_row[0]
         print(chat_id)
-        sql = text("INSERT INTO messages (message, time, chat_id, user_id) VALUES (:message, NOW(), :chat_id, :user_id);")
+        sql = text(
+            "INSERT INTO messages (message, time, chat_id, user_id) "
+            "VALUES (:message, NOW(), :chat_id, :user_id);")
         db.session.execute(sql, {"message": message, "chat_id": chat_id, "user_id": user_id})
         db.session.commit()
         return chat_id
-    else:
-        return False
-    
+    return False
+
 def delete(message_id):
     sql = text("DELETE FROM messages WHERE id=:id;")
     db.session.execute(sql, {"id": message_id})
@@ -110,18 +117,18 @@ def check_messagecount(chat_id):
         db.session.execute(delete_room, {"chat_id": chat_id})
         db.session.commit()
         return True
-    else:
-        return False
-    
+    return False
+
 def search(query):
     searchresult = []
     if query != "":
-        sql = text("SELECT DISTINCT m.chat_id, c.id, c.name FROM messages m JOIN chats c ON m.chat_id = c.id WHERE m.message ILIKE :query OR c.name ILIKE :query;")
-        search = db.session.execute(sql, {"query": "%" + query + "%"})
-        chat_data = search.fetchall()
+        sql = text(
+            "SELECT DISTINCT m.chat_id, c.id, c.name FROM messages m "
+            "JOIN chats c ON m.chat_id = c.id WHERE m.message ILIKE :query OR c.name ILIKE :query;")
+        searching = db.session.execute(sql, {"query": "%" + query + "%"})
+        chat_details = searching.fetchall()
 
-
-        for c_id, chat_id, c_name in chat_data:
+        for c_id, chat_id, c_name in chat_details:
             message_count = text("SELECT count(chat_id) FROM messages WHERE chat_id=:chat_id;")
             chat_count = db.session.execute(message_count, {"chat_id": chat_id})
             count = chat_count.fetchone()
