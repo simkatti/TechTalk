@@ -97,8 +97,7 @@ def chat(chat_id):
                 count = fetch.check_messagecount(chat_id)
                 if count:
                     return redirect("/home")
-                else:
-                    return redirect(f"/chat/{chat_id}")
+                return redirect(f"/chat/{chat_id}")
             else:
                 chat_delete = False
 
