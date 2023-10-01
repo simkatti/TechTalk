@@ -104,7 +104,7 @@ def chat(chat_id):
 
         else:
             message = request.form["new_message"]
-            if 1< len(message) < 1000:
+            if 1 < len(message) < 1000:
                 user_id = session.get("id")
                 if fetch.send(message, chat_id, user_id):
                     return redirect(f"/chat/{chat_id}")

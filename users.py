@@ -31,5 +31,6 @@ def register(username, password):
         db.session.execute(sql, {"username":username, "password":hash_value})
         db.session.commit()
         return True
-    except:
+    except Exception as e: 
+        print(e)
         return False
