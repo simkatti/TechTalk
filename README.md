@@ -2,7 +2,8 @@
 
 TechTalk on redditin/jodelin tyylinen keskustleualusta erityisesti tietojenkäsittelytieteiden jäsenille.
 Käyttäjä voi:
-- kirjautua sisään/ulos ja luoda käyttäjätilin
+- luoda uuden käyttäjän
+- kirjautua sisään ja ulos
 - kirjauduttuaan sisään nähdä eri huoneita(kanavia) eri kategorioista
 - aloittaa uuden keskustelun
 - luoda uuden huoneen
